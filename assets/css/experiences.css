@@ -1,0 +1,208 @@
+/* ═══════════════════════════════
+   EXPERIENCES PAGE — experiences.css
+═══════════════════════════════ */
+
+.page-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 5rem;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  /* background-image: url('assets/images/experiences-hero.jpg'); */
+  background:
+    radial-gradient(ellipse at 40% 60%, rgba(26,107,107,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.1) 0%, transparent 40%),
+    var(--deep-2);
+  background-size: cover;
+  background-position: center;
+}
+
+.page-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--deep) 0%, rgba(8,8,16,0.4) 70%, transparent 100%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-height) + 5rem);
+}
+
+.page-hero-content .tag { margin-bottom: 1rem; display: inline-block; }
+
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.02;
+  margin-bottom: 1rem;
+}
+
+.page-hero-title em { font-style: italic; color: var(--gold); }
+.page-hero-sub { color: var(--text-muted); font-size: 1rem; max-width: 500px; }
+
+/* ── Filter Bar ── */
+.filter-bar {
+  background: rgba(8,8,16,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 1.5rem 0;
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 100;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  cursor: none;
+  border-radius: 2px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(201,168,76,0.1);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--transition);
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before { transform: scaleY(1); }
+
+.filter-btn:hover,
+.filter-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── Experiences Grid ── */
+.exp-grid-section {
+  padding: 5rem 0 9rem;
+  background: var(--deep);
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.08);
+}
+
+.exp-card {
+  background: var(--deep);
+  overflow: hidden;
+  transition: background var(--transition);
+  position: relative;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), var(--teal));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  z-index: 2;
+}
+
+.exp-card:hover::before { transform: scaleX(1); }
+.exp-card:hover { background: var(--deep-2); }
+.exp-card.hidden { display: none; }
+
+.exp-card-img {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image slot for each experience — replace background-image with actual photos */
+.exp-card-img .img-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+.exp-card:hover .exp-card-img .img-bg { transform: scale(1.08); }
+
+.exp-card-body {
+  padding: 1.6rem;
+}
+
+.exp-cat {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 3px 10px;
+  margin-bottom: 0.8rem;
+}
+
+.exp-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+  transition: color var(--transition);
+}
+
+.exp-card:hover .exp-card-body h3 { color: var(--gold-light); }
+
+.exp-card-body p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.exp-meta {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.76rem;
+  color: var(--text-mid);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 0.8rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .exp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .exp-grid { grid-template-columns: 1fr; }
+}

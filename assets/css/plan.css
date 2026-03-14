@@ -1,0 +1,262 @@
+/* ═══════════════════════════════
+   PLAN PAGE — plan.css
+═══════════════════════════════ */
+
+.page-hero {
+  min-height: 40vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 4rem;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  /* background-image: url('assets/images/plan-hero.jpg'); */
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.15) 0%, transparent 55%),
+    var(--deep-2);
+  background-size: cover;
+  background-position: center;
+}
+
+.page-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--deep) 0%, rgba(8,8,16,0.5) 60%, transparent 100%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-height) + 4rem);
+}
+
+.page-hero-content .tag { margin-bottom: 1rem; display: inline-block; }
+
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.page-hero-title em { font-style: italic; color: var(--gold); }
+.page-hero-sub { color: var(--text-muted); font-size: 1rem; max-width: 500px; }
+
+/* ── Plan Tabs ── */
+.plan-tabs-section {
+  padding: 4rem 0 8rem;
+  background: var(--deep);
+}
+
+.plan-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-bottom: -1px;
+}
+
+.tab-btn:hover { color: var(--white); }
+
+.tab-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ── Tab Content ── */
+.tab-content {
+  display: none;
+  animation: fadeTab 0.4s ease;
+}
+
+.tab-content.active { display: block; }
+
+@keyframes fadeTab {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Plan Grid ── */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.plan-card {
+  background: var(--deep-2);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 2rem 1.5rem;
+  transition: border-color var(--transition);
+}
+
+.plan-card:hover { border-color: rgba(201,168,76,0.3); }
+
+.plan-card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+.plan-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.plan-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.plan-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.plan-list li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.plan-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.75rem;
+}
+
+/* ── Budget Table ── */
+.budget-table {
+  background: var(--deep-2);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 2.5rem;
+  max-width: 800px;
+}
+
+.budget-table h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.budget-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.budget-table th {
+  text-align: left;
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+
+.budget-table td {
+  padding: 12px 16px;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.budget-table td:first-child { color: var(--text-mid); }
+
+.total-row td {
+  color: var(--white) !important;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  border-bottom: none !important;
+  padding-top: 16px;
+}
+
+.budget-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ── Weather Cards ── */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.weather-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid;
+}
+
+.weather-good {
+  background: rgba(26,107,107,0.08);
+  border-color: rgba(26,107,107,0.3);
+}
+
+.weather-ok {
+  background: rgba(186,117,23,0.08);
+  border-color: rgba(186,117,23,0.3);
+}
+
+.weather-tip {
+  background: rgba(201,168,76,0.06);
+  border-color: rgba(201,168,76,0.2);
+}
+
+.weather-card h4 {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+
+.weather-months {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.weather-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .plan-grid, .weather-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .plan-grid, .weather-grid { grid-template-columns: 1fr; }
+  .budget-table { padding: 1.5rem; overflow-x: auto; }
+}

@@ -1,0 +1,393 @@
+/* ═══════════════════════════════
+   CULTURE PAGE — culture.css
+═══════════════════════════════ */
+
+.page-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 5rem;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  /* background-image: url('assets/images/culture-hero.jpg'); */
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 40%, rgba(26,107,107,0.15) 0%, transparent 45%),
+    var(--deep-2);
+  background-size: cover;
+  background-position: center;
+}
+
+.page-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--deep) 0%, rgba(8,8,16,0.5) 60%, transparent 100%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-height) + 5rem);
+}
+
+.page-hero-content .tag { margin-bottom: 1rem; display: inline-block; }
+
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.02;
+  margin-bottom: 1rem;
+}
+
+.page-hero-title em { font-style: italic; color: var(--gold); }
+.page-hero-sub { color: var(--text-muted); font-size: 1rem; max-width: 500px; }
+
+/* ── Culture Section ── */
+.culture-section {
+  padding: 8rem 0;
+  background: var(--deep);
+  position: relative;
+}
+
+.dos-donts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(255,255,255,0.03);
+}
+
+.dos, .donts {
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dos::before {
+  content: '✓';
+  position: absolute;
+  right: 1rem;
+  bottom: -1rem;
+  font-size: 8rem;
+  color: rgba(26,107,107,0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.donts::before {
+  content: '✗';
+  position: absolute;
+  right: 1rem;
+  bottom: -1rem;
+  font-size: 8rem;
+  color: rgba(212,83,126,0.06);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.dos { background: rgba(26,107,107,0.06); border: 1px solid rgba(26,107,107,0.2); }
+.donts { background: rgba(212,83,126,0.06); border: 1px solid rgba(212,83,126,0.2); }
+
+.dos h3, .donts h3 {
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+  letter-spacing: 0.08em;
+}
+
+.dos ul, .donts ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dos ul li, .donts ul li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.65;
+  transition: color var(--transition), padding-left var(--transition);
+}
+
+.dos ul li:hover, .donts ul li:hover { color: var(--text-mid); padding-left: 1.6rem; }
+
+.dos ul li::before { content: '›'; position: absolute; left: 0; color: #1D9E75; }
+.donts ul li::before { content: '›'; position: absolute; left: 0; color: #D4537E; }
+
+/* ── Ramadan Section ── */
+.ramadan-section {
+  padding: 8rem 0;
+  background: var(--deep-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ramadan-section::before {
+  content: 'رمضان';
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-arabic);
+  font-size: 18rem;
+  color: rgba(201,168,76,0.03);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.ramadan-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.ramadan-visual {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.ramadan-visual .img-bg {
+  width: 100%;
+  height: 100%;
+  /* background-image: url('assets/images/ramadan.jpg'); */
+  background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.3) 0%, rgba(100,56,6,0.6) 50%, var(--deep-3) 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.ramadan-text .tag { margin-bottom: 1rem; display: inline-block; }
+
+.ramadan-text h2 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.ramadan-text p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.ramadan-tips {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(201,168,76,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+}
+
+.ramadan-tips h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.ramadan-tips ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+.ramadan-tips ul li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.ramadan-tips ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
+
+/* ── Food Culture ── */
+.food-culture {
+  padding: 8rem 0;
+  background: var(--deep);
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.08);
+}
+
+.food-card {
+  background: var(--deep);
+  overflow: hidden;
+  transition: background var(--transition);
+  position: relative;
+}
+
+.food-card:hover { background: var(--deep-2); }
+
+.food-card-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-card-image .img-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+
+.food-card:hover .food-card-image .img-bg { transform: scale(1.08); }
+
+/* Food image slots */
+.food-img--shawarma .img-bg {
+  background-position: center;   /* ดึงภาพขึ้นมาด้านบน */
+}
+.food-img--hummus .img-bg {
+  background-position: center; 
+}
+.food-img--machboos .img-bg {
+  background-position: center; 
+}
+.food-img--kunafa .img-bg {
+  background-position: center; 
+}
+.food-img--coffee .img-bg {
+  background-position: center; 
+}
+.food-img--dates .img-bg {
+  background-position: center; 
+}
+
+.food-card-body {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.food-card-body h4 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.food-card-body p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── Traditions Section ── */
+.traditions-section {
+  padding: 8rem 0;
+  background: var(--deep-2);
+}
+
+.traditions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid rgba(201,168,76,0.08);
+}
+
+.tradition-card {
+  background: var(--deep-2);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: background var(--transition);
+}
+
+.tradition-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.tradition-card:hover { background: var(--deep-3); }
+.tradition-card:hover::after { transform: scaleX(1); }
+
+.tradition-img {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.tradition-img .img-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+.tradition-card:hover .tradition-img .img-bg { transform: scale(1.08); }
+
+/* Tradition image slots */
+.trad-img--falconry .img-bg {
+  background-size: contain;         /* เห็นทั้งภาพ */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.trad-img--camel .img-bg {
+  background-size: contain;         /* เห็นทั้งภาพ */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.trad-img--dhow .img-bg {
+  background-size: contain;         /* เห็นทั้งภาพ */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.trad-img--henna .img-bg {
+  background-size: contain;         /* เห็นทั้งภาพ */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tradition-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.tradition-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .dos-donts { grid-template-columns: 1fr; }
+  .ramadan-card { grid-template-columns: 1fr; gap: 2rem; }
+  .food-grid { grid-template-columns: repeat(2,1fr); }
+  .traditions-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 480px) {
+  .food-grid { grid-template-columns: 1fr; }
+  .traditions-grid { grid-template-columns: 1fr; }
+}
