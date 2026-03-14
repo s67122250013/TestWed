@@ -44,7 +44,6 @@
   transform: translateY(-50%);
   z-index: 3;
   opacity: 0;
-  transition: opacity 0.6s ease;
   background: transparent;
   animation: falconEntrance 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
 }
@@ -63,7 +62,7 @@
   filter: drop-shadow(0 0 60px rgba(201,168,76,0.7)) drop-shadow(0 0 120px rgba(201,168,76,0.3));
 }
 
-/* Entrance: เข้ามาจากขวา + fade in + scale */
+/* Entrance desktop — มี translateY(-50%) */
 @keyframes falconEntrance {
   0% {
     opacity: 0;
@@ -78,6 +77,25 @@
   100% {
     opacity: 0.85;
     transform: translateY(-50%) translateX(0) scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* Entrance มือถือ — ไม่มี translateY */
+@keyframes falconEntranceMobile {
+  0% {
+    opacity: 0;
+    transform: translateX(40px) scale(0.88) rotate(3deg);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateX(-6px) scale(1.03) rotate(-1deg);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1) rotate(0deg);
     filter: blur(0px);
   }
 }
@@ -101,19 +119,20 @@
   50%       { filter: drop-shadow(0 0 80px rgba(201,168,76,0.85)) drop-shadow(0 0 150px rgba(201,168,76,0.4)); }
 }
 
-/* มือถือ — นกอยู่ใต้ hero-content แบบ static */
+/* มือถือ — นกอยู่ใน flow ใต้ stats */
 @media (max-width: 900px) {
   .hero-logo {
     position: static;
     transform: none;
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     opacity: 0;
-    animation: falconEntrance 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    animation: falconEntranceMobile 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
   }
   .hero-logo img {
     width: 260px;
+    animation: falconFloat 5s ease-in-out infinite, falconGlow 4s ease-in-out infinite;
   }
 }
 
@@ -666,11 +685,6 @@
 
 @media (max-width: 900px) {
   .hero-side { display: none; }
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 4rem;
-  }
   .hero-content,
   .hero-content.container {
     max-width: 100%;
